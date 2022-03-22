@@ -19,7 +19,7 @@ export default class MenuPage extends React.Component {
   render() {
     const { current } = this.state;
     return (
-      <>
+      <div style={{background: 'red'}}>
         <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
           <Menu.Item key="mail" icon={<MailOutlined />}>
             <Link to='/1' >首页</Link>
@@ -43,7 +43,7 @@ export default class MenuPage extends React.Component {
         <div>
           <Outlet />
         </div>
-      </>
+      </div>
     );
   }
 }

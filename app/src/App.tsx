@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Cascader, ConfigProvider, Input } from 'antd';
 import { Provider } from "mobx-react";

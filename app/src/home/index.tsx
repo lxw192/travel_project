@@ -8,7 +8,8 @@ class Home extends React.Component{
   }
   onClick=()=>{
     // request('/api/user/logout', {} , {})
-    request('api/feature-toggle/page', {} , {})
+    // request('api/feature-toggle/page', {} , {})
+    request('/user/login', {name:'liuxiaowei' , pass: '123456'} , {method: 'POST'})
   }
 
   render(){
