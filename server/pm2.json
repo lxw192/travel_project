@@ -1,0 +1,16 @@
+{
+  "apps" : [{
+    "name": "bean-server",
+    "script": "dist/src/main.js",
+    "env": {
+      "NODE_ENV": "development",
+      "ENV": "development"
+    },
+    "env_production" : {
+       "NODE_ENV": "production",
+       "ENV": "production"
+    },
+    "log_date_format": "YYYY-MM-DD_HH:mm Z",
+    "merge_logs": true
+  }]
+}

@@ -1,0 +1,19 @@
+stages:
+  - build
+
+# 安装依赖
+deploy:
+  stage: build
+  only:
+    - develop
+    - master
+  script:
+    - yarn
+    - sed -i s/123456//g src/app.module.ts 
+    - yarn build
+    - rsync  -arc . --exclude node_modules --exclude src  root@100.100.100.100:/home/web/bean-server
+    - ssh root@100.100.100.100 "cd /home/web/bean-server && yarn && yarn add easy-monitor"
+    - ssh root@100.100.100.100 "cd /home/web/bean-server && pm2 restart bean-server
+"
+  tags:
+    - build
