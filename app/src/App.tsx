@@ -25,6 +25,7 @@ function App() {
                 <Route path='5' element={<Register/>}></Route>
                 <Route path='6' element={<Register/>}></Route>
               </Route>
+              <Route path='/register' element={<Register/>}></Route>
             </Routes>
           </BrowserRouter>
         </Provider>
