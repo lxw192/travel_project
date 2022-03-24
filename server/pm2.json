@@ -1,6 +1,6 @@
 {
   "apps" : [{
-    "name": "bean-server",
+    "name": "travel",
     "script": "dist/src/main.js",
     "env": {
       "NODE_ENV": "development",

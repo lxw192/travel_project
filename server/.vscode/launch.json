@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "bean-server",
+      "name": "travel-server",
       "runtimeArgs": [
         "--nolazy",
         "-r",

@@ -3,18 +3,20 @@ import './App.css';
 import { Cascader, ConfigProvider, Input } from 'antd';
 import { Provider } from "mobx-react";
 import store from './models/index';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, BrowserRouter, Routes , useNavigate } from 'react-router-dom';
 
 import Home from './home';
 import MenuPage from './home/Menu';
 import Register from './register/register';
+import Login from './register/login';
 
 
+// const navigate = useNavigate();
 function App() {
   return (
     <div className="App">
       <ConfigProvider csp={{ nonce: 'YourNonceCode' }}>
-        <Provider {...store}>
+        <Provider {...store }>
           <BrowserRouter >
             <Routes>
               <Route path='/' element={<MenuPage/>}>
@@ -26,6 +28,7 @@ function App() {
                 <Route path='6' element={<Register/>}></Route>
               </Route>
               <Route path='/register' element={<Register/>}></Route>
+              <Route path='/login' element={<Login />}></Route>
             </Routes>
           </BrowserRouter>
         </Provider>

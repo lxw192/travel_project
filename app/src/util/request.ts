@@ -1,3 +1,4 @@
+import { message } from "antd";
 import axios from "axios";
 
 export default async function request( 
@@ -38,7 +39,25 @@ export default async function request(
 
   console.log('newOptionnewOptionnewOption' , newOptions);
   
-  return axios(newOptions).then(res=>{
-    console.log('111111111111111111111', res );
+  return axios(newOptions).then((res:any)=>{
+    try{
+      if(checkStatus(res)){ }
+      return res?.data;
+    }catch(err){
+      console.log(err);
+    }
   })
+}
+
+
+export function checkStatus(res: any){
+  const code = res?.data?.code;
+  const msg = res?.data?.msg;
+  if(code === 200000){
+    message.success('成功')
+    return true
+  }else{
+    message.error(msg || '')
+    return false
+  }
 }

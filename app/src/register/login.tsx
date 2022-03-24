@@ -1,15 +1,36 @@
 import { Button, Form, Input } from 'antd';
 import React from 'react';
+import { inject, observer } from "mobx-react";
+import { History } from 'history';
 import request from '../util/request';
 import styles from './register.module.less';
+import User from '../models/User';
+import { NavigateFunction } from 'react-router-dom';
+import anoyCom from '../routers/anonyCom';
+import { checkCode } from '../util/util';
 
-class Register extends React.Component {
+interface Iprops {
+  user: User;
+  navigate: NavigateFunction;
+}
+
+@inject('user')
+@observer
+class Login extends React.Component<Iprops> {
   constructor(porps: any) {
     super(porps);
   }
   onSubmit = (value: any) => {
-    console.log('value', value)
-    request('/user/register' , value , {method: 'Post'})
+    const { user , navigate } = this.props;
+    
+    user.login({
+      data: value,
+      callback: (res:any)=>{
+        if(checkCode(res?.code)){
+          navigate('/')
+        }
+      }
+    })
   }
 
   render() {
@@ -33,8 +54,7 @@ class Register extends React.Component {
               wrapperCol={{ span: 12 }} >
               <Input placeholder='请输入密码' />
             </Form.Item>
-            <Button htmlType="submit" type='primary' style={{ width: 300 }}>立即注册</Button>
-            <div className={styles.agreementBox}>注册视为同意《马蜂窝用户使用协议》。已有账号，<a href='/login'>去登陆</a></div>
+            <Button htmlType="submit" type='primary' style={{ width: 300 }}>立即登录</Button>
           </Form>
           <div className={styles.otherLogin}>
             <div>其他账号登录</div>
@@ -44,4 +64,4 @@ class Register extends React.Component {
     )
   }
 }
-export default Register;
+export default anoyCom(Login)

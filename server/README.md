@@ -1,6 +1,6 @@
 ======
 
-项目名：bean-server`。
+项目名：travel-server`。
 
 ## 安装 node, git
 
