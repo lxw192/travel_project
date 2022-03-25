@@ -326,14 +326,15 @@ module.exports = function (webpackEnv) {
         // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
         // please link the files into your node_modules/ and let module-resolution kick in.
         // Make sure your source files are compiled, as they will not be processed in any way.
-        new ModuleScopePlugin(paths.appSrc, [
-          paths.appPackageJson,
-          reactRefreshRuntimeEntry,
-          reactRefreshWebpackPluginRuntimeEntry,
-          babelRuntimeEntry,
-          babelRuntimeEntryHelpers,
-          babelRuntimeRegenerator,
-        ]),
+        // 控制是否可以 引用 src之外的 文件
+        // new ModuleScopePlugin(paths.appSrc, [
+        //   paths.appPackageJson,
+        //   reactRefreshRuntimeEntry,
+        //   reactRefreshWebpackPluginRuntimeEntry,
+        //   babelRuntimeEntry,
+        //   babelRuntimeEntryHelpers,
+        //   babelRuntimeRegenerator,
+        // ]),
       ],
     },
     module: {
